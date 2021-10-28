@@ -49,7 +49,7 @@ class HTTPTransport extends Transport {
         return Promise.reject(responseErr);
       }
     } catch (e) {
-      const responseErr = new JSONRPCError(e.message, ERR_UNKNOWN, e);
+      const responseErr = new JSONRPCError((e as Error).message, ERR_UNKNOWN, e);
       this.transportRequestManager.settlePendingRequest(notifications, responseErr);
       this.transportRequestManager.settlePendingRequest(getBatchRequests(data), responseErr);
       return Promise.reject(responseErr);

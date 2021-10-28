@@ -38,7 +38,7 @@ class PostMessageIframeTransport extends Transport {
       }
       this.frame = await this.createWindow(this.uri);
       window.addEventListener("message", this.messageHandler);
-      resolve();
+      resolve(null);
     });
   }
 

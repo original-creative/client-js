@@ -16,7 +16,7 @@ class WebSocketTransport extends Transport {
     return new Promise((resolve, reject) => {
       const cb = () => {
         this.connection.removeEventListener("open", cb);
-        resolve();
+        resolve(null);
       };
       this.connection.addEventListener("open", cb);
       this.connection.addEventListener("message", (message: { data: string }) => {
