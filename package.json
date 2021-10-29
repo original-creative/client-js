@@ -1,5 +1,5 @@
 {
-  "name": "json-rpc.js",
+  "name": "window-rpc.js",
   "version": "0.0.0-development",
   "description": " A browser-compatible JSON-RPC client with multiple transports.",
   "main": "build/index.js",
