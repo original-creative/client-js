@@ -13,7 +13,7 @@ const client = new Client(requestManager);
 emitter.on(chan1, (jsonrpcRequest) => {
   const res = {
     jsonrpc: "2.0",
-    result: "potato",
+    result: [],
     id: jsonrpcRequest.id,
   };
   emitter.emit(chan2, JSON.stringify(res));

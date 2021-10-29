@@ -4,6 +4,8 @@ import HTTPTransport from "./transports/HTTPTransport";
 import WebSocketTransport from "./transports/WebSocketTransport";
 import PostMessageWindowTransport from "./transports/PostMessageWindowTransport";
 import PostMessageIframeTransport from "./transports/PostMessageIframeTransport";
+import { ResponseFunc, Intermediary, IndirectTransport } from "./transports/IndirectTransport";
+
 import { JSONRPCError } from "./Error";
 import Client from "./Client";
 
@@ -17,4 +19,7 @@ export {
   JSONRPCError,
   PostMessageWindowTransport,
   PostMessageIframeTransport,
+  ResponseFunc,
+  Intermediary,
+  IndirectTransport,
 };
