@@ -88,7 +88,7 @@ var TransportRequestManager = /** @class */ (function () {
     };
     TransportRequestManager.prototype.processResult = function (payload, prom) {
         if (payload.error) {
-            var err = Error_1.convertJSONToRPCError(payload);
+            var err = (0, Error_1.convertJSONToRPCError)(payload);
             prom.reject(err);
             return;
         }
@@ -120,7 +120,7 @@ var TransportRequestManager = /** @class */ (function () {
         }
         var err;
         if (error) {
-            err = Error_1.convertJSONToRPCError(data);
+            err = (0, Error_1.convertJSONToRPCError)(data);
         }
         if (emitError && error && err) {
             this.transportEventChannel.emit("error", err);

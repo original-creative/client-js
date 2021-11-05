@@ -4,7 +4,8 @@ export interface ResponseFunc {
     (msg: string): void;
 }
 export interface Intermediary {
-    request(msg: string, response: ResponseFunc): void;
+    setup(response: ResponseFunc): void;
+    request(msg: string): void;
 }
 export declare class IndirectTransport extends Transport {
     intermediary: Intermediary;

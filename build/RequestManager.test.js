@@ -62,7 +62,7 @@ describe("client-js", function () {
             switch (_a.label) {
                 case 0:
                     emitter = new events_1.EventEmitter();
-                    eventEmitter_1.addMockServerTransport(emitter, "from1", "to1://local/rpc-response");
+                    (0, eventEmitter_1.addMockServerTransport)(emitter, "from1", "to1://local/rpc-response");
                     transport = new EventEmitterTransport_1.default(emitter, "from1", "to1://local/rpc-response");
                     c = new RequestManager_1.default([transport]);
                     return [4 /*yield*/, c.request({ method: "foo", params: ["bar"] })];
@@ -80,7 +80,7 @@ describe("client-js", function () {
             switch (_a.label) {
                 case 0:
                     emitter = new events_1.EventEmitter();
-                    eventEmitter_1.addMockServerTransport(emitter, "from1", "to1://local/rpc-error");
+                    (0, eventEmitter_1.addMockServerTransport)(emitter, "from1", "to1://local/rpc-error");
                     transport = new EventEmitterTransport_1.default(emitter, "from1", "to1://local/rpc-error");
                     c = new RequestManager_1.default([transport]);
                     return [4 /*yield*/, expect(c.request({ method: "foo", params: ["bar"] })).rejects.toThrowError("Error message")];
@@ -96,7 +96,7 @@ describe("client-js", function () {
             switch (_a.label) {
                 case 0:
                     emitter = new events_1.EventEmitter();
-                    eventEmitter_1.addMockServerTransport(emitter, "from1", "to1://local/rpc-garbage");
+                    (0, eventEmitter_1.addMockServerTransport)(emitter, "from1", "to1://local/rpc-garbage");
                     transport = new EventEmitterTransport_1.default(emitter, "from1", "to1://local/rpc-garbage");
                     c = new RequestManager_1.default([transport]);
                     unknownError = new Promise(function (resolve) {
@@ -132,7 +132,7 @@ describe("client-js", function () {
             switch (_a.label) {
                 case 0:
                     emitter = new events_1.EventEmitter();
-                    eventEmitter_1.addMockServerTransport(emitter, "from1", "to1://local/rpc-error");
+                    (0, eventEmitter_1.addMockServerTransport)(emitter, "from1", "to1://local/rpc-error");
                     transport = new EventEmitterTransport_1.default(emitter, "from1", "to1://local/rpc-error");
                     c = new RequestManager_1.default([transport]);
                     c.startBatch();
@@ -154,7 +154,7 @@ describe("client-js", function () {
             switch (_b.label) {
                 case 0:
                     emitter = new events_1.EventEmitter();
-                    eventEmitter_1.addMockServerTransport(emitter, "from1", "to1://local/rpc-response");
+                    (0, eventEmitter_1.addMockServerTransport)(emitter, "from1", "to1://local/rpc-response");
                     transport = new EventEmitterTransport_1.default(emitter, "from1", "to1://local/rpc-response");
                     c = new RequestManager_1.default([transport]);
                     c.startBatch();
@@ -180,7 +180,7 @@ describe("client-js", function () {
             switch (_b.label) {
                 case 0:
                     emitter = new events_1.EventEmitter();
-                    eventEmitter_1.addMockServerTransport(emitter, "from1", "to1://local/rpc-response");
+                    (0, eventEmitter_1.addMockServerTransport)(emitter, "from1", "to1://local/rpc-response");
                     transport = new EventEmitterTransport_1.default(emitter, "from1", "to1://local/rpc-response");
                     c = new RequestManager_1.default([transport]);
                     c.startBatch();

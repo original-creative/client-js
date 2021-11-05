@@ -30,9 +30,9 @@ describe("client-js", function () {
     it("can recieve notifications", function (done) {
         var emitter = new events_1.EventEmitter();
         var c = new _1.Client(new RequestManager_1.default([new EventEmitterTransport_1.default(emitter, "from1", "to1")]));
-        eventEmitter_1.addMockServerTransport(emitter, "from1", "to1://asdf/rpc-notification");
+        (0, eventEmitter_1.addMockServerTransport)(emitter, "from1", "to1://asdf/rpc-notification");
         c.onNotification(function () { return done(); });
-        emitter.emit("to1", JSON.stringify(requestData_1.generateMockNotificationRequest("foo", ["bar"])));
+        emitter.emit("to1", JSON.stringify((0, requestData_1.generateMockNotificationRequest)("foo", ["bar"])));
     });
     it("can register error and subscription handlers", function () {
         var emitter = new events_1.EventEmitter();

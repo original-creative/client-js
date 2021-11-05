@@ -3,10 +3,12 @@ var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
             ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
         return extendStatics(d, b);
     };
     return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
         extendStatics(d, b);
         function __() { this.constructor = d; }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
@@ -83,12 +85,12 @@ var HTTPTransport = /** @class */ (function (_super) {
                 switch (_a.label) {
                     case 0:
                         prom = this.transportRequestManager.addRequest(data, timeout);
-                        notifications = Request_1.getNotifications(data);
-                        batch = Request_1.getBatchRequests(data);
+                        notifications = (0, Request_1.getNotifications)(data);
+                        batch = (0, Request_1.getBatchRequests)(data);
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 4, , 5]);
-                        return [4 /*yield*/, isomorphic_fetch_1.default(this.uri, {
+                        return [4 /*yield*/, (0, isomorphic_fetch_1.default)(this.uri, {
                                 method: "POST",
                                 headers: this.headers,
                                 body: JSON.stringify(this.parseData(data)),
@@ -116,7 +118,7 @@ var HTTPTransport = /** @class */ (function (_super) {
                         e_1 = _a.sent();
                         responseErr = new Error_1.JSONRPCError(e_1.message, Error_1.ERR_UNKNOWN, e_1);
                         this.transportRequestManager.settlePendingRequest(notifications, responseErr);
-                        this.transportRequestManager.settlePendingRequest(Request_1.getBatchRequests(data), responseErr);
+                        this.transportRequestManager.settlePendingRequest((0, Request_1.getBatchRequests)(data), responseErr);
                         return [2 /*return*/, Promise.reject(responseErr)];
                     case 5: return [2 /*return*/, prom];
                 }

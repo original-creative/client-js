@@ -71,13 +71,13 @@ describe("EventEmitterTransport", function () {
             switch (_a.label) {
                 case 0:
                     emitter = new events_1.EventEmitter();
-                    eventEmitter_1.addMockServerTransport(emitter, "from1://asdf/rpc-request", "to1://asdf/rpc-response");
+                    (0, eventEmitter_1.addMockServerTransport)(emitter, "from1://asdf/rpc-request", "to1://asdf/rpc-response");
                     eventEmitterTransport = new EventEmitterTransport_1.default(emitter, "from1://asdf/rpc-request", "to1://asdf/rpc-response");
                     return [4 /*yield*/, eventEmitterTransport.connect()];
                 case 1:
                     _a.sent();
                     return [4 /*yield*/, eventEmitterTransport.sendData({
-                            request: requestData_1.generateMockRequest(1, "foo", ["bar"]),
+                            request: (0, requestData_1.generateMockRequest)(1, "foo", ["bar"]),
                             internalID: 1,
                         })];
                 case 2:
@@ -94,13 +94,13 @@ describe("EventEmitterTransport", function () {
             switch (_a.label) {
                 case 0:
                     emitter = new events_1.EventEmitter();
-                    eventEmitter_1.addMockServerTransport(emitter, "from1", "to1://asdf/rpc-notification");
+                    (0, eventEmitter_1.addMockServerTransport)(emitter, "from1", "to1://asdf/rpc-notification");
                     eventEmitterTransport = new EventEmitterTransport_1.default(emitter, "from1", "to1://asdf/rpc-notification");
                     return [4 /*yield*/, eventEmitterTransport.connect()];
                 case 1:
                     _a.sent();
                     return [4 /*yield*/, eventEmitterTransport.sendData({
-                            request: requestData_1.generateMockNotificationRequest("foo", ["bar"]),
+                            request: (0, requestData_1.generateMockNotificationRequest)("foo", ["bar"]),
                             internalID: 1,
                         })];
                 case 2:
@@ -116,13 +116,13 @@ describe("EventEmitterTransport", function () {
             switch (_a.label) {
                 case 0:
                     emitter = new events_1.EventEmitter();
-                    eventEmitter_1.addMockServerTransport(emitter, "from1", "to1://asdf/rpc-error");
+                    (0, eventEmitter_1.addMockServerTransport)(emitter, "from1", "to1://asdf/rpc-error");
                     eventEmitterTransport = new EventEmitterTransport_1.default(emitter, "from1", "to1://asdf/rpc-error");
                     return [4 /*yield*/, eventEmitterTransport.connect()];
                 case 1:
                     _a.sent();
                     return [4 /*yield*/, expect(eventEmitterTransport.sendData({
-                            request: requestData_1.generateMockRequest(1, "foo", ["bar"]),
+                            request: (0, requestData_1.generateMockRequest)(1, "foo", ["bar"]),
                             internalID: 1,
                         }))
                             .rejects.toThrowError("Error message")];
@@ -138,14 +138,14 @@ describe("EventEmitterTransport", function () {
             switch (_a.label) {
                 case 0:
                     emitter = new events_1.EventEmitter();
-                    eventEmitter_1.addMockServerTransport(emitter, "from1", "to1://asdf/rpc-error");
+                    (0, eventEmitter_1.addMockServerTransport)(emitter, "from1", "to1://asdf/rpc-error");
                     eventEmitterTransport = new EventEmitterTransport_1.default(emitter, "from1", "to1://asdf/rpc-error");
                     return [4 /*yield*/, eventEmitterTransport.connect()];
                 case 1:
                     _a.sent();
                     eventEmitterTransport.connection.emit = function () { throw new Error("failed protocol"); };
                     return [4 /*yield*/, expect(eventEmitterTransport.sendData({
-                            request: requestData_1.generateMockRequest(1, "foo", ["bar"]),
+                            request: (0, requestData_1.generateMockRequest)(1, "foo", ["bar"]),
                             internalID: 1,
                         }))
                             .rejects.toThrowError("failed protocol")];

@@ -1,3 +1,3 @@
 /// <reference types="jest" />
-declare const Fetch: jest.Mock<Promise<any>, [string, any]>;
+declare const Fetch: jest.Mock<Promise<any>, [url: string, options: any]>;
 export default Fetch;

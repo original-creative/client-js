@@ -14,14 +14,14 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.addMockServerTransport = void 0;
 var req = __importStar(require("./requestData"));
-exports.addMockServerTransport = function (emitter, reqUri, resUri) {
+var addMockServerTransport = function (emitter, reqUri, resUri) {
     emitter.on(reqUri, function (data) {
         var res = req.generateMockResponseData(resUri, data);
         if (res) {
@@ -29,4 +29,5 @@ exports.addMockServerTransport = function (emitter, reqUri, resUri) {
         }
     });
 };
+exports.addMockServerTransport = addMockServerTransport;
 //# sourceMappingURL=eventEmitter.js.map

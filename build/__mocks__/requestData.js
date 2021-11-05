@@ -5,14 +5,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.generateMockResponseData = exports.generateMockErrorResponse = exports.generateMockNotificationResponse = exports.generateMockResponse = exports.generateMockRequest = exports.generateMockNotificationRequest = void 0;
 var url_1 = __importDefault(require("url"));
-exports.generateMockNotificationRequest = function (method, params) {
+var generateMockNotificationRequest = function (method, params) {
     return {
         jsonrpc: "2.0",
         method: method,
         params: params,
     };
 };
-exports.generateMockRequest = function (id, method, params) {
+exports.generateMockNotificationRequest = generateMockNotificationRequest;
+var generateMockRequest = function (id, method, params) {
     return {
         id: id,
         jsonrpc: "2.0",
@@ -20,7 +21,8 @@ exports.generateMockRequest = function (id, method, params) {
         params: params,
     };
 };
-exports.generateMockResponse = function (id, result, error) {
+exports.generateMockRequest = generateMockRequest;
+var generateMockResponse = function (id, result, error) {
     return {
         id: id,
         jsonrpc: "2.0",
@@ -28,14 +30,16 @@ exports.generateMockResponse = function (id, result, error) {
         error: error,
     };
 };
-exports.generateMockNotificationResponse = function (result, error) {
+exports.generateMockResponse = generateMockResponse;
+var generateMockNotificationResponse = function (result, error) {
     return {
         jsonrpc: "2.0",
         result: result,
         error: error,
     };
 };
-exports.generateMockErrorResponse = function (id, data) {
+exports.generateMockNotificationResponse = generateMockNotificationResponse;
+var generateMockErrorResponse = function (id, data) {
     return {
         id: id,
         jsonrpc: "2.0",
@@ -46,7 +50,8 @@ exports.generateMockErrorResponse = function (id, data) {
         },
     };
 };
-exports.generateMockResponseData = function (uri, data) {
+exports.generateMockErrorResponse = generateMockErrorResponse;
+var generateMockResponseData = function (uri, data) {
     var parsedUrl = url_1.default.parse(uri);
     var path = parsedUrl.path || "";
     var rpcNotification = path.search("rpc-notification");
@@ -68,11 +73,12 @@ exports.generateMockResponseData = function (uri, data) {
     }
     return data;
 };
+exports.generateMockResponseData = generateMockResponseData;
 var generateSingleRequestResponse = function (error, data) {
     if (error) {
-        return exports.generateMockErrorResponse(data.id, data);
+        return (0, exports.generateMockErrorResponse)(data.id, data);
     }
-    return exports.generateMockResponse(data.id, data);
+    return (0, exports.generateMockResponse)(data.id, data);
 };
 var generateRequestResponse = function (error, data) {
     var parsedReq = data;

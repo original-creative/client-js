@@ -38,10 +38,11 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.defaultNextRequest = void 0;
 var events_1 = require("events");
-exports.defaultNextRequest = function () {
+var defaultNextRequest = function () {
     var lastId = -1;
     return function () { return ++lastId; };
 };
+exports.defaultNextRequest = defaultNextRequest;
 /*
 ** Naive Request Manager, only use 1st transport.
  * A more complex request manager could try each transport.
@@ -49,7 +50,7 @@ exports.defaultNextRequest = function () {
  */
 var RequestManager = /** @class */ (function () {
     function RequestManager(transports, nextID) {
-        if (nextID === void 0) { nextID = exports.defaultNextRequest(); }
+        if (nextID === void 0) { nextID = (0, exports.defaultNextRequest)(); }
         this.batch = [];
         this.batchStarted = false;
         this.lastId = -1;

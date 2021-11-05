@@ -11,7 +11,8 @@ export interface ResponseFunc {
 }
 
 export interface Intermediary {
-  request(msg: string, response: ResponseFunc): void;
+  setup(response: ResponseFunc): void
+  request(msg: string): void;
 }
 
 export class IndirectTransport extends Transport {
@@ -20,6 +21,7 @@ export class IndirectTransport extends Transport {
   constructor(intermediary: Intermediary) {
     super();
     this.intermediary = intermediary;
+    intermediary.setup(this.onResponse.bind(this))
   }
 
   onResponse(msg: string): void {
@@ -40,8 +42,7 @@ export class IndirectTransport extends Transport {
     }
 
     try {
-      this.intermediary.request(JSON.stringify(parsedData),
-        this.onResponse.bind(this))
+      this.intermediary.request(JSON.stringify(parsedData))
       this.transportRequestManager.settlePendingRequest(notifications);
       return prom;
     } catch (e) {

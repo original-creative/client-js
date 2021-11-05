@@ -46,12 +46,21 @@ var requestManager = new __1.RequestManager([transport]);
 var client = new __1.Client(requestManager);
 // event emitter server code
 emitter.on(chan1, function (jsonrpcRequest) {
+    var notify = {
+        jsonrpc: "2.0",
+        method: ["hello"],
+        params: ["world"],
+    };
+    emitter.emit(chan2, JSON.stringify(notify));
     var res = {
         jsonrpc: "2.0",
         result: [],
         id: jsonrpcRequest.id,
     };
     emitter.emit(chan2, JSON.stringify(res));
+});
+client.onNotification(function (data) {
+    console.log("onNotify:", data);
 });
 var main = function () { return __awaiter(void 0, void 0, void 0, function () {
     var result;

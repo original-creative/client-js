@@ -47,7 +47,7 @@ var server;
 var port;
 beforeAll(function (done) {
     server = http_1.default.createServer(function (request, response) {
-        return serve_handler_1.default(request, response, {
+        return (0, serve_handler_1.default)(request, response, {
             public: "src/testiframe",
         });
     });
@@ -87,7 +87,7 @@ describe("PostMessageIframeTransport", function () {
                     case 1:
                         _a.sent();
                         return [4 /*yield*/, pmt.sendData({
-                                request: requestData_1.generateMockRequest(0, "foo", ["bar"]),
+                                request: (0, requestData_1.generateMockRequest)(0, "foo", ["bar"]),
                                 internalID: 0
                             })];
                     case 2:
@@ -107,7 +107,7 @@ describe("PostMessageIframeTransport", function () {
                     case 1:
                         _a.sent();
                         return [4 /*yield*/, pmt.sendData({
-                                request: requestData_1.generateMockRequest(0, "foo", ["bar"]),
+                                request: (0, requestData_1.generateMockRequest)(0, "foo", ["bar"]),
                                 internalID: 0
                             }, 10000)];
                     case 2:
@@ -130,7 +130,7 @@ describe("PostMessageIframeTransport", function () {
                     case 1:
                         _a.sent();
                         return [4 /*yield*/, expect(pmt.sendData({
-                                request: requestData_1.generateMockRequest(1, "foo", ["bar"]),
+                                request: (0, requestData_1.generateMockRequest)(1, "foo", ["bar"]),
                                 internalID: 1,
                             })).rejects.toThrowError("Error message")];
                     case 2:
@@ -152,7 +152,7 @@ describe("PostMessageIframeTransport", function () {
                     case 1:
                         _a.sent();
                         return [4 /*yield*/, expect(pmt.sendData({
-                                request: requestData_1.generateMockRequest(2, "foo", ["bar"]),
+                                request: (0, requestData_1.generateMockRequest)(2, "foo", ["bar"]),
                                 internalID: 2,
                             })).rejects.toThrowError("Random Segfault that crashes fetch")];
                     case 2:

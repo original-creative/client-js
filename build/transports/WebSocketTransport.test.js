@@ -59,7 +59,7 @@ describe("WebSocketTransport", function () {
                     return [4 /*yield*/, wst.connect()];
                 case 1:
                     _a.sent();
-                    return [4 /*yield*/, wst.sendData({ request: requestData_1.generateMockRequest(1, "foo", ["bar"]), internalID: 1 })];
+                    return [4 /*yield*/, wst.sendData({ request: (0, requestData_1.generateMockRequest)(1, "foo", ["bar"]), internalID: 1 })];
                 case 2:
                     result = _a.sent();
                     expect(result.method).toEqual("foo");
@@ -77,7 +77,7 @@ describe("WebSocketTransport", function () {
                     return [4 /*yield*/, wst.connect()];
                 case 1:
                     _a.sent();
-                    return [4 /*yield*/, wst.sendData({ request: requestData_1.generateMockRequest(1, "foo", ["bar"]), internalID: 1 }, 10000)];
+                    return [4 /*yield*/, wst.sendData({ request: (0, requestData_1.generateMockRequest)(1, "foo", ["bar"]), internalID: 1 }, 10000)];
                 case 2:
                     result = _a.sent();
                     expect(result.method).toEqual("foo");
@@ -96,7 +96,7 @@ describe("WebSocketTransport", function () {
                 case 1:
                     _a.sent();
                     return [4 /*yield*/, expect(wst.sendData({
-                            request: requestData_1.generateMockRequest(1, "foo", ["bar"]),
+                            request: (0, requestData_1.generateMockRequest)(1, "foo", ["bar"]),
                             internalID: 1,
                         })).rejects.toThrowError("Error message")];
                 case 2:
@@ -115,7 +115,7 @@ describe("WebSocketTransport", function () {
                 case 1:
                     _a.sent();
                     return [4 /*yield*/, expect(wst.sendData({
-                            request: requestData_1.generateMockRequest(1, "foo", ["bar"]),
+                            request: (0, requestData_1.generateMockRequest)(1, "foo", ["bar"]),
                             internalID: 1,
                         })).rejects.toThrowError("Random Segfault that crashes fetch")];
                 case 2:

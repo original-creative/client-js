@@ -4,9 +4,9 @@ var Error_1 = require("./Error");
 var requestData_1 = require("./__mocks__/requestData");
 describe("Error test", function () {
     it("should convert payload to JSONRPC error ", function () {
-        var err = Error_1.convertJSONToRPCError("message");
+        var err = (0, Error_1.convertJSONToRPCError)("message");
         expect(err instanceof Error).toBe(true);
-        err = Error_1.convertJSONToRPCError(requestData_1.generateMockErrorResponse(1, "somedata"));
+        err = (0, Error_1.convertJSONToRPCError)((0, requestData_1.generateMockErrorResponse)(1, "somedata"));
         expect(err instanceof Error).toBe(true);
     });
     it("should construct JSONRPCError", function () {
